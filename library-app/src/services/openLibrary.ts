@@ -53,3 +53,15 @@ export async function getWork(workKey: string) {
   const res = await axios.get(url);
   return res.data as Work;
 }
+
+export async function getSubjectBooks(subject: string, limit = 10) {
+  const url = `${BASE_URL}/subjects/${encodeURIComponent(subject)}.json?limit=${limit}`;
+  const res = await axios.get(url);
+  return (res.data.works as any[]).map((w) => ({
+    key: w.key,
+    title: w.title,
+    author_name: w.authors?.map((a: any) => a.name),
+    first_publish_year: w.first_publish_year,
+    cover_i: w.cover_id,
+  })) as Book[];
+}

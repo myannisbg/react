@@ -8,7 +8,7 @@ interface Props {
 
 const BookList: React.FC<Props> = ({ books }) => {
   return (
-    <div>
+    <div className="book-grid">
       {books.map((b) => (
         <BookItem key={b.key} book={b} />
       ))}

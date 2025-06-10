@@ -11,8 +11,8 @@ const BookItem: React.FC<Props> = ({ book }) => {
     ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
     : undefined;
   return (
-    <div style={{ border: '1px solid #ccc', padding: '0.5rem', margin: '0.5rem' }}>
-      {coverUrl && <img src={coverUrl} alt={book.title} style={{ width: 80 }} />}
+    <div className="book-item">
+      {coverUrl && <img className="book-cover" src={coverUrl} alt={book.title} />}
       <div>
         <Link to={`/book${book.key}`}>{book.title}</Link>
         {book.author_name && <div>by {book.author_name.join(', ')}</div>}
